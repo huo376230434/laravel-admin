@@ -1,14 +1,14 @@
 {
-    "name": "encore/laravel-admin",
-    "description": "laravel admin",
+    "name": "huojunhao/admin",
+    "description": "laravel-admin做了稍许改动，自己项目用，要找原项目，请找https://github.com/z-song/laravel-admin",
     "type": "library",
-    "keywords": ["laravel", "admin", "grid", "form"],
+    "keywords": [ "grid", "form"],
     "homepage": "https://github.com/z-song/laravel-admin",
     "license": "MIT",
     "authors": [
         {
-            "name": "zsong",
-            "email": "zosong@126.com"
+            "name": "11",
+            "email": "22@126.com"
         }
     ],
     "require": {
