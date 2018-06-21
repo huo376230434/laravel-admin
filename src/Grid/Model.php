@@ -40,6 +40,10 @@ class Model
      */
     protected $data = [];
 
+
+    public $chinese_sort=[];
+
+
     /*
      * 20 items per page as default.
      *
@@ -398,10 +402,27 @@ class Model
         } else {
             $this->resetOrderBy();
 
-            $this->queries->push([
-                'method'    => 'orderBy',
-                'arguments' => [$this->sort['column'], $this->sort['type']],
-            ]);
+
+
+            if (in_array($this->sort['column'], $this->chinese_sort)) {
+                $this->queries->push([
+                    'method'    => 'orderByRaw',
+                    'arguments' =>['convert('.$this->sort['column'].' using gbk) COLLATE gbk_chinese_ci '.$this->sort['type'].' '],
+                ]);
+            }else{
+                $this->queries->push([
+                    'method'    => 'orderBy',
+                    'arguments' => [$this->sort['column'], $this->sort['type']],
+                ]);
+
+            }
+
+
+
+//            $this->queries->push([
+//                'method'    => 'orderBy',
+//                'arguments' => [$this->sort['column'], $this->sort['type']],
+//            ]);
         }
     }
 

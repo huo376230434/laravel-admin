@@ -281,9 +281,11 @@ class Column
      *
      * @return Column
      */
-    public function sortable()
+    public function sortable($chinese_order = false)
     {
         $this->sortable = true;
+        $chinese_order && array_push($this->grid->model()->chinese_sort, $this->getName());
+
 
         return $this;
     }
