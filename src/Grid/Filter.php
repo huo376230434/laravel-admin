@@ -68,14 +68,21 @@ class Filter
     protected $action;
 
     /**
+     * If use a modal to hold the filters.
+     *
+     * @var bool
+     */
+    protected $useModal = false;
+    /**
      * @var string
      */
-    protected $view = 'admin::filter.modal';
+    protected $view = 'admin::grid.filter';
 
     /**
      * @var string
      */
     protected $filterModalId = 'filter-modal';
+
 
     /**
      * Create a new filter instance.
@@ -89,6 +96,16 @@ class Filter
         $pk = $this->model->eloquent()->getKeyName();
 
         $this->equal($pk, strtoupper($pk));
+    }
+
+
+
+    /**
+     * Use modal to show filter form.
+     */
+    public function useModal()
+    {
+        $this->useModal = true;
     }
 
     /**
@@ -242,7 +259,13 @@ class Filter
             return '';
         }
 
-        $script = <<<'EOT'
+
+
+
+        if ($this->useModal) {
+            $this->view = 'admin::filter.modal';
+
+            $script = <<<'EOT'
 
 $("#filter-modal .submit").click(function () {
     $("#filter-modal").modal('toggle');
@@ -251,7 +274,15 @@ $("#filter-modal .submit").click(function () {
 });
 
 EOT;
-        Admin::script($script);
+            Admin::script($script);
+
+        }
+
+
+
+
+
+
 
         return view($this->view)->with([
             'action'  => $this->action ?: $this->urlWithoutFilters(),
