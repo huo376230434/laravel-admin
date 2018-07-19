@@ -680,7 +680,9 @@ class Field implements Renderable
      */
     public function getPlaceholder()
     {
-        return $this->placeholder ?: trans('admin.input').' '.$this->label;
+//        return $this->placeholder ?: trans('admin.input').' '.$this->label;
+//       2018-07-17 更改没有则为空
+        return $this->placeholder ?: "";
     }
 
     /**

@@ -285,7 +285,10 @@ EOT;
     {
         $configs = array_merge([
             'allowClear'  => true,
-            'placeholder' => $this->label,
+//            'placeholder' => $this->label,
+
+            //       2018-07-17 更改place_holder为空
+            'placeholder' => "",
         ], $this->config);
 
         $configs = json_encode($configs);

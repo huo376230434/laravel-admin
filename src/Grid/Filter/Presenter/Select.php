@@ -49,8 +49,9 @@ class Select extends Presenter
         }
 
         if (empty($this->script)) {
-            $placeholder = trans('admin.choose');
-
+//            $placeholder = trans('admin.choose');
+//       2018-07-17 更改没有则为空
+            $placeholder = "";
             $this->script = <<<SCRIPT
 $(".{$this->getElementClass()}").select2({
 allowClear : true,
