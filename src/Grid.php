@@ -145,6 +145,12 @@ class Grid
      */
     public $tools;
 
+
+    protected $grid_table_top;
+
+    protected $grid_table_bottom;
+
+
     /**
      * Callback for grid actions.
      *
@@ -206,6 +212,38 @@ class Grid
     protected function setupFilter()
     {
         $this->filter = new Filter($this->model());
+    }
+
+
+    public function setGridTableTop(Closure $closure)
+    {
+        $this->grid_table_top = $closure;
+    }
+
+    public function gridTableTopRender()
+    {
+        if ($this->grid_table_top  instanceof Closure) {
+          return  call_user_func($this->grid_table_top,$this);
+        }
+
+    }
+    
+    
+    
+
+
+    public function setGridTableBottom(Closure $closure)
+    {
+        $this->grid_table_bottom = $closure;
+    }
+
+
+    public function gridTableBottomRender()
+    {
+        if ($this->grid_table_bottom instanceof Closure) {
+          return  call_user_func($this->grid_table_bottom,$this);
+        }
+        
     }
 
     /**

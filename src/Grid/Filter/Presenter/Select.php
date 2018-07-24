@@ -54,6 +54,7 @@ class Select extends Presenter
             $placeholder = "";
             $this->script = <<<SCRIPT
 $(".{$this->getElementClass()}").select2({
+ minimumResultsForSearch :10,
 allowClear : true,
   placeholder: "$placeholder"
 });

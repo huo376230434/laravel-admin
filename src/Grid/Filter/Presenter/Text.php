@@ -28,7 +28,9 @@ class Text extends Presenter
      */
     public function __construct($placeholder = '')
     {
-        $this->placeholder($placeholder);
+
+        //不要placeholder
+//        $this->placeholder($placeholder);
     }
 
     /**
