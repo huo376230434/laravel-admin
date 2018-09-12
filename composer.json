@@ -14,7 +14,12 @@
     "require": {
         "php": ">=7.0.0",
         "symfony/dom-crawler": "~3.1",
-        "laravel/framework": "~5.5"
+        "laravel/framework": "~5.5",
+        "huojunhao/admin_config": "v2.0.*",
+        "huojunhao/admin_log-viewer": "v2.0.*",
+        "huojunhao/scheduling": "v2.0.*",
+        "huojunhao/aliyun-oss-adapter": "v2.0.*",
+        "huojunhao/tencent-oss-adapter": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
