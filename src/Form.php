@@ -167,6 +167,8 @@ class Form
      */
     public $rows = [];
 
+    public $action_mode = "";
+
     /**
      * Create a new form instance.
      *
@@ -282,6 +284,7 @@ class Form
      */
     public function destroy($id)
     {
+        $this->action_mode = "destroy";
         $ids = explode(',', $id);
 
         foreach ($ids as $id) {
@@ -321,6 +324,8 @@ class Form
      */
     public function store()
     {
+        $this->action_mode = "add";
+
         $data = Input::all();
 
         // Handle validation errors.
@@ -500,6 +505,8 @@ class Form
      */
     public function update($id, $data = null)
     {
+        $this->action_mode = "update";
+
         $data = ($data) ?: Input::all();
 
         $isEditable = $this->isEditable($data);
